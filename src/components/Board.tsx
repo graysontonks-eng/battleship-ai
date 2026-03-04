@@ -30,12 +30,14 @@ export default function Board({
       <h2 className="board-label">{label}</h2>
       <div className="board">
         {/* Column headers */}
-        <div className="board-header-cell" />
-        {COL_HEADERS.map((ch) => (
-          <div key={ch} className="board-header-cell">
-            {ch}
-          </div>
-        ))}
+        <div className="board-row">
+          <div className="board-header-cell" />
+          {COL_HEADERS.map((ch) => (
+            <div key={ch} className="board-header-cell">
+              {ch}
+            </div>
+          ))}
+        </div>
 
         {board.map((row, r) => (
           <div key={r} className="board-row">
