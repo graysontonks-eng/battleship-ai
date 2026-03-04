@@ -1,42 +1,168 @@
+/* ── Layout ─────────────────────────────────────────────────────────── */
+
 #root {
-  max-width: 1280px;
+  max-width: 1100px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 1rem 2rem 2rem;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* ── Game ────────────────────────────────────────────────────────────── */
+
+.game-title {
+  font-size: 2.4em;
+  margin-bottom: 0.2em;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+.status {
+  font-size: 1.1em;
+  min-height: 1.6em;
+  margin-bottom: 1rem;
+}
+
+.status--gameover {
+  font-weight: 700;
+  font-size: 1.3em;
+  color: #ffd700;
+}
+
+/* ── Buttons ─────────────────────────────────────────────────────────── */
+
+.btn {
+  font-size: 1em;
+  padding: 0.6em 1.6em;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 1.5rem;
+  transition: border-color 0.25s, background-color 0.25s;
+}
+
+.btn--start {
+  background-color: #1a6b1a;
+  color: #fff;
+}
+.btn--start:hover {
+  background-color: #228b22;
+  border-color: #4caf50;
+}
+
+.btn--restart {
+  background-color: #8b0000;
+  color: #fff;
+}
+.btn--restart:hover {
+  background-color: #b22222;
+  border-color: #ff4444;
+}
+
+/* ── Boards container ────────────────────────────────────────────────── */
+
+.boards {
+  display: flex;
+  gap: 3rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.board-container {
+  display: inline-block;
+}
+
+.board-label {
+  font-size: 1.1em;
+  margin-bottom: 0.5rem;
+}
+
+/* ── Grid ────────────────────────────────────────────────────────────── */
+
+.board {
+  display: inline-block;
+}
+
+.board-row {
+  display: flex;
+}
+
+.board-header-cell {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75em;
+  font-weight: 600;
+  color: #999;
+  user-select: none;
+}
+
+/* ── Cell ─────────────────────────────────────────────────────────────── */
+
+.cell {
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  margin: 0;
+  border: 1px solid #444;
+  background-color: #1a2a3a;
+  color: #fff;
+  font-size: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+
+.cell:hover:not(:disabled) {
+  background-color: #2a4a6a;
+}
+
+.cell:disabled {
+  cursor: default;
+}
+
+.cell--ship {
+  background-color: #336;
+}
+
+.cell--hit {
+  background-color: #b22222;
+  color: #fff;
+}
+
+.cell--miss {
+  background-color: #2a3a4a;
+  color: #666;
+}
+
+/* ── Light mode overrides ────────────────────────────────────────────── */
+
+@media (prefers-color-scheme: light) {
+  .cell {
+    border-color: #bbb;
+    background-color: #d0e8f8;
+    color: #000;
   }
-  to {
-    transform: rotate(360deg);
+  .cell:hover:not(:disabled) {
+    background-color: #a0c8e8;
   }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+  .cell--ship {
+    background-color: #8899bb;
   }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+  .cell--hit {
+    background-color: #cc3333;
+    color: #fff;
+  }
+  .cell--miss {
+    background-color: #e0e8f0;
+    color: #999;
+  }
+  .board-header-cell {
+    color: #666;
+  }
+  .status--gameover {
+    color: #b8860b;
+  }
 }
